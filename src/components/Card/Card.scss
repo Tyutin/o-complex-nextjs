@@ -1,0 +1,12 @@
+@import "../../assets/variables.scss";
+@import "../../assets/include-media.scss";
+
+.card {
+  background-color: $COLOR_GRAY_MAIN;
+  border-radius: 15px;
+  padding: 10px 12px;
+
+  @include media("<=phone-large") {
+    padding: 8px;
+  }
+}
