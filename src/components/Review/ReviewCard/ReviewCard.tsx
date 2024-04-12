@@ -1,4 +1,4 @@
-import * as DOMPurify from 'dompurify';
+import * as DOMPurify from 'isomorphic-dompurify';
 import Card from '@/components/UI/Card/Card';
 import './ReviewCard.scss';
 

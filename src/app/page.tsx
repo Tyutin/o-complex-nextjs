@@ -1,5 +1,10 @@
-import React from 'react';
+import ReviewSection from '@/components/Review/ReviewSection/ReviewSection';
+import './MainPage.scss';
 
-export default function page() {
-  return <div>page</div>;
+export default function MainPage() {
+  return (
+    <main className="main-page">
+      <ReviewSection />
+    </main>
+  );
 }

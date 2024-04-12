@@ -30,3 +30,21 @@ img {
   margin: 0 auto;
   padding: 0 15px;
 }
+
+.section {
+  padding: 60px 0;
+
+  @include media("<tablet-small") {
+    padding: 40px 0;
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: 2rem;
+    margin-bottom: 40px;
+
+    @include media("<tablet-small") {
+      margin-bottom: 20px;
+    }
+  }
+}
