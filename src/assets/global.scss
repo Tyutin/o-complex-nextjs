@@ -1,0 +1,11 @@
+@import "./reset.scss";
+@import "./variables.scss";
+
+html {
+  line-height: 1.2;
+}
+
+body {
+  background-color: $COLOR_CORAL;
+  color: $COLOR_MAIN_TEXT;
+}
