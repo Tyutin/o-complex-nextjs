@@ -9,3 +9,9 @@ body {
   background-color: $COLOR_CORAL;
   color: $COLOR_MAIN_TEXT;
 }
+
+.container {
+  max-width: $WIDTH_CONTAINER_MAX;
+  margin: 0 auto;
+  padding: 0 15px;
+}
