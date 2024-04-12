@@ -1,0 +1,53 @@
+@import "../../../assets/include-media.scss";
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+
+  &__image {
+    border-radius: 15px;
+    width: 100%;
+    margin-bottom: 10px;
+    height: 400px;
+    object-fit: cover;
+
+    @include media("<=container") {
+      height: 500px;
+    }
+
+    @include media("<=tablet-small") {
+      max-width: 400px;
+      height: auto;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__title {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    word-break: break-word;
+  }
+
+  &__description {
+    word-break: break-word;
+  }
+
+  &__cart-block {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__price {
+    text-align: center;
+    font-size: 1.5rem;
+  }
+}

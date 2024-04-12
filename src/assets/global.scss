@@ -1,14 +1,28 @@
 @import "./reset.scss";
 @import "./variables.scss";
+@import "./include-media.scss";
 
 html {
   line-height: 1.2;
   font-size: 24px;
+
+  @include media("<=container") {
+    font-size: 20px;
+  }
+
+  @include media("<tablet-small") {
+    font-size: 16px;
+  }
 }
 
 body {
   background-color: $COLOR_CORAL;
   color: $COLOR_MAIN_TEXT;
+}
+
+img {
+  display: block;
+  max-width: 100%;
 }
 
 .container {

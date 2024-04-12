@@ -1,0 +1,16 @@
+@import "../../../assets/include-media.scss";
+
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 35px;
+  row-gap: 40px;
+
+  @include media("<=container") {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include media("<tablet-small") {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
