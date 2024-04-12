@@ -1,0 +1,11 @@
+@import '../../../assets/include-media.scss';
+
+.review-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+
+  @include media ('<= tablet-small') {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
