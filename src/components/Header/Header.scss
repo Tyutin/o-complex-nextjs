@@ -1,0 +1,16 @@
+@import "../../assets/variables.scss";
+@import "../../assets/include-media.scss";
+
+.header {
+
+  &__content {
+    color: #fff;
+    background-color: $COLOR_GRAY_DARK;
+    font-size: 4rem;
+    text-align: center;
+
+    @include media("<=phone-large") {
+      font-size: 3rem;
+    }
+  }
+}
