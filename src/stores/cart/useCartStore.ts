@@ -18,7 +18,7 @@ type CartActions = {
   setItemQuantity: (cartItem: ProductInterface, quantyti: number) => void;
   setPhoneNumber: (phone: string) => void;
   isCanCreateOrder: () => boolean;
-  createOrder: () => void;
+  createOrder: () => Promise<CreateOrderResponse | null>;
 };
 
 export type CartStore = CartState & CartActions;
@@ -89,7 +89,12 @@ export const useCartStore = create<CartStore>()(
             }),
           };
           const createOrderResponse = await createOrderAction(createOrderDto);
-          console.log(createOrderResponse);
+          if (createOrderResponse?.success) {
+            set((state) => {
+              state.items = [];
+            });
+          }
+          return createOrderResponse;
         },
       }),
       {

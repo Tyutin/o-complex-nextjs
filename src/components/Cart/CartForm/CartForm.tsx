@@ -1,27 +1,28 @@
 'use client';
 import Card from '../../UI/Card/Card';
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, ReactNode, useEffect, useState } from 'react';
 import Input from '../../UI/Input/Input';
 
 import Button from '@/components/UI/Button/Button';
 import './CartForm.scss';
 import { useCartStore } from '@/stores/cart/useCartStore';
 import useStore from '@/stores/useStore';
+import Popup from '@/components/UI/Popup/Popup';
 
 export default function CartForm() {
   const [isLoading, setIsLoading] = useState(false);
+  const [popupContent, setPopupContent] = useState<ReactNode | null>(null);
 
   const cartStore = useStore(useCartStore, (state) => state);
+  useEffect(() => {
+    setPopupContent(null);
+  }, [setPopupContent, cartStore]);
+
   if (!cartStore) {
     return <CartFormSkeleton />;
   }
-  const {
-    items = [],
-    phone = '',
-    setPhoneNumber,
-    isCanCreateOrder,
-    createOrder,
-  } = cartStore;
+  const { items, phone, setPhoneNumber, isCanCreateOrder, createOrder } =
+    cartStore;
 
   const handlePhoneChange = (event: ChangeEvent<HTMLInputElement>) => {
     const newPhone = event.target.value.replace(/[^\d]+/g, '');
@@ -31,9 +32,24 @@ export default function CartForm() {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setIsLoading(true);
+    let title: string;
+    let message: string;
     (async () => {
-      await createOrder();
+      const createOrderResponse = await createOrder();
+      if (createOrderResponse?.success) {
+        title = 'Заказ успешно оформлен!';
+        message = 'Мы уже собираем заказ, и скоро он будет у вас!';
+      } else if (createOrderResponse?.error) {
+        title = 'Ошибка при оформлении заказа :(';
+        message = createOrderResponse.error;
+      } else {
+        title = 'Ошибка при оформлении заказа :(';
+        message = 'Обратитесь к администратору';
+      }
       setIsLoading(false);
+      setTimeout(() => {
+        setPopupContent(<CartPopupContent {...{ title, message }} />);
+      }, 0);
     })();
   };
 
@@ -78,6 +94,7 @@ export default function CartForm() {
           </Button>
         </div>
       </form>
+      {!!popupContent && <Popup>{popupContent}</Popup>}
     </Card>
   );
 }
@@ -101,5 +118,20 @@ function CartFormSkeleton() {
         </div>
       </div>
     </Card>
+  );
+}
+
+function CartPopupContent({
+  title,
+  message,
+}: {
+  title: string;
+  message: string;
+}) {
+  return (
+    <div className="cart-form__popup-content">
+      <span className="cart-form__popup-title">{title}</span>
+      <span className="cart-form__popup-message">{message}</span>
+    </div>
   );
 }
