@@ -1,4 +1,8 @@
 # NextJS (App Router) O-complex project
+
+## Просмотр проекта
+Проект можно увидеть на [o-complex.containers.cloud.ru](https://o-complex.containers.cloud.ru/)
+
 ## Запуск проекта
 Установить зависимости в корне проекта
 ```sh
