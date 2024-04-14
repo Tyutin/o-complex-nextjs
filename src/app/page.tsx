@@ -6,7 +6,7 @@ import './MainPage.scss';
 export default function MainPage() {
   return (
     <main className="main-page">
-      {/* <ReviewSection /> */}
+      <ReviewSection />
       <CartSetcion />
       <ProductsSection />
     </main>

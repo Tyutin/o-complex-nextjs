@@ -13,7 +13,8 @@ export default function ReviewList({ reviews, className }: ReviewListProps) {
     <ul className={classNames('review-list', className)}>
       {reviews.map((review) => {
         return (
-          <li className="review-list__item" key={review.id}>
+          // приходят 2 отзыва с одинаковым id
+          <li className="review-list__item" key={Math.random()}>
             <ReviewCard htmlContent={review.text} />
           </li>
         );
