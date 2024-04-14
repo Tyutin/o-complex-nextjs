@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 type ButtonProps = {
   children: ReactNode;
-  onClick: () => void;
+  onClick?: () => void;
   className?: string;
   disabled?: boolean;
   type?: 'button' | 'reset' | 'submit';

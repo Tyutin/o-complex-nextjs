@@ -1,0 +1,38 @@
+@import "../../../assets/include-media.scss";
+
+.product-cart-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+
+  &__add-to-cart-button {
+    width: 100%;
+    height: 68px;
+
+    @include media("<=phone-large") {
+      height: 50px;
+    }
+  }
+
+  &__count-change-button {
+    width: 68px;
+    height: 68px;
+
+    @include media("<=phone-large") {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  &__count-input {
+    width: calc(100% - 156px);
+    height: 68px;
+    text-align: center;
+
+    @include media("<=phone-large") {
+      width: calc(100% - 120px);
+      height: 50px;
+    }
+  }
+}

@@ -1,0 +1,73 @@
+@import "../../../assets/include-media.scss";
+
+.cart-form {
+  max-width: 700px;
+  margin: 0 auto;
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__title {
+    font-size: 1.5rem;
+  }
+
+  &__item-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    @include media("<=phone-large") {
+      gap: 10px;
+    }
+  }
+
+  &__item-title {
+    width: 50%;
+    word-break: break-word;
+  }
+
+  &__item-quantity {
+    flex-grow: 1;
+  }
+
+  &__item-total {
+    flex-grow: 1;
+    text-align: right;
+  }
+
+  &__controls {
+    display: flex;
+    justify-content: space-between;
+
+    @include media("<tablet-small") {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+
+  &__submit {
+    height: 68px;
+
+    @include media("<tablet-small") {
+      height: 50px;
+    }
+  }
+
+  &__phone-input {
+    height: 68px;
+    text-align: center;
+
+    @include media("<tablet-small") {
+      height: 50px;
+    }
+  }
+}
